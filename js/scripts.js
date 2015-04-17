@@ -20,6 +20,10 @@ function Client() {
   this.generateId = function() {
     this.id = this.name + Math.floor(Math.random() * 999999) + 1;
   }
+
+  this.getCost = function() {
+    return (this.cheese * 10 + this.pepperoni * 12.50).toFixed(2);
+  }
 }
 
 function getMessage(client) {

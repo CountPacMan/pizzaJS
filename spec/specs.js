@@ -32,4 +32,13 @@ describe('PizzaJS - scripts.js', function() {
       expect(testClient.pepperoni).to.equal(1);
     });
   });
+
+  describe('total cost from addPizza("pepperoni", 2) and addPizza("cheese", 3)', function() {
+    it("adds 2 pepperoni and 3 cheese pizzas and gets the total cost", function() {
+      var testClient = new Client();
+      testClient.addPizza("pepperoni", 2);
+      testClient.addPizza("cheese", 3);
+      expect(testClient.getCost()).to.equal('55.00');
+    });
+  });
 });
