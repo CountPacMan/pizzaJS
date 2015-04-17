@@ -5,6 +5,7 @@
 Emulates a simple website for a pizza company where a user can go to order a pizza.
 
 - The user can choose between cheese and pepperoni.
+- Employees can see the current orders and remove the completed ones from the list.
 
 This website uses cookies and requires a webserver to run.
 
