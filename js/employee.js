@@ -21,9 +21,15 @@ function getClientIndex(id) {
   return -1;
 }
 
+function getCost(client) {
+  client.cheese = +client.cheese || 0;
+  return (client.cheese * 10 + client.pepperoni * 12.50).toFixed(2);
+}
+
 jQuery(document).ready(function() {
   for (var i in allClients) {
-    $("#order").append("<li>" + "<span class='delete'>x </span>" + allClients[i].name + " - " + getMessage(allClients[i]) + "</li>");
+    $("#order").append("<li>" + "<span class='delete'>x </span>" + allClients[i].name + " - " + getMessage(allClients[i]) + " = $<span class='text-info'>" + getCost(allClients[i]) +"</span></li>");
+
     // add attribute with the client id to the delete x span
     $(".delete").last().attr("value", allClients[i].id);
     $(".delete").last().click(function(event) {
