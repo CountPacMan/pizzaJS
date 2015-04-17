@@ -28,6 +28,7 @@ jQuery(document).ready(function() {
   $("#name-form").submit(function(event) {
     event.preventDefault();
     $("#name-form").hide();
+    $("#emplyee-login").hide();
 
     var clientName = $("#name").val();
     var newClient = new Client();
@@ -46,7 +47,9 @@ jQuery(document).ready(function() {
       newClient.addPizza("pepperoni", pepperoni);
 
       allClients.push(newClient);
-
+      Cookies.set("allClients", JSON.stringify(allClients));
+      console.log(allClients);
+      console.log(JSON.parse(Cookies.get("allClients")));
       var message = getMessage(newClient);
 
       $("#order").text(message);
@@ -54,10 +57,16 @@ jQuery(document).ready(function() {
 
       $("#new-order").click(function(event) {
         $("#message").hide();
-        $("input").val("");        
+        $("input").val("");
         $("#name-form").show();
+        $("#employee-login").show();
         $("#name").focus();
       });
     });
+  });
+
+  $("#employee-btn").click(function(event) {
+    event.preventDefault();
+    window.open('employee.html','_self',false);
   });
 });
