@@ -20,12 +20,31 @@ jQuery(document).ready(function() {
   $("#name-form").submit(function(event) {
     event.preventDefault();
     $("#name-form").hide();
-    
+
     var clientName = $("#name").val();
     var newClient = new Client();
     newClient.name = clientName;
 
     $("#client-name").text(clientName);
     $("#order-form").show();
+
+    $("#order-form").submit(function(event) {
+      event.preventDefault();
+      $("#order-form").hide();
+
+      var cheese = parseInt($("#cheese").val());
+      var pepperoni = parseInt($("#pepperoni").val());
+      newClient.addPizza("cheese", cheese);
+      newClient.addPizza("pepperoni", pepperoni);
+
+      var message = cheese > 0 ? cheese + " cheese" : "";
+      message += cheese > 0 && pepperoni > 0 ? " and " : "";
+      message += pepperoni > 0 ? pepperoni + " pepperoni" : "";
+      message += cheese + pepperoni > 1 ? " pizzas" : " pizza";
+      
+      $("#order").text(message);
+      $("#message").show();
+      debugger;
+    });
   });
 });
