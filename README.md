@@ -6,9 +6,12 @@ Emulates a simple website for a pizza company where a user can go to order a piz
 
 - The user can choose between cheese and pepperoni.
 
+This website uses cookies and requires a webserver to run.
+
 #### Setup instructions
 1. Clone this git repository
-2. Start the web app by loading index.html in your browser
+2. Point your webserver to the repository folder
+2. Start the website by connecting to your localhost
 
 #### Copyright © 2015, Daniel Toader
 
