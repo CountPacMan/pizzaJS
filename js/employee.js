@@ -21,6 +21,7 @@ function getClientIndex(id) {
   return -1;
 }
 
+// since cookies are stored as JSON, methods don't transfer with the object. I had to recreate the getCost method here
 function getCost(client) {
   client.cheese = +client.cheese || 0;
   return (client.cheese * 10 + client.pepperoni * 12.50).toFixed(2);
