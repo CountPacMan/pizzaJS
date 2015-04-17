@@ -1,3 +1,21 @@
 #message, #order-form {
   display: none;
 }
+
+ul {
+  list-style-type: none;
+}
+
+.delete {
+  font-weight: bold;
+  color: grey;
+}
+
+.delete:hover {
+    color: red;
+    cursor: pointer;
+}
+
+#order {
+  font-size: large;
+}

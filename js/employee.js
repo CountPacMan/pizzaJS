@@ -1,3 +1,7 @@
+var allClients = [];
+if (JSON.parse(Cookies.get("allClients")).length > 0) {
+  allClients = JSON.parse(Cookies.get("allClients"));
+}
 
 function getMessage(client) {
   var message = client.cheese > 0 ? client.cheese + " cheese" : "";
@@ -8,9 +12,33 @@ function getMessage(client) {
   return message;
 }
 
-jQuery(document).ready(function() {
-  var orders = JSON.parse(Cookies.get("allClients"));
-  for (var i in orders) {
-    $("#order").append("<li>" + orders[i].name + " - " + getMessage(orders[i]) + "</li>");
+function getClientIndex(id) {
+  for (var i in allClients) {
+    if (allClients[i].id === id) {
+      return i;
+    }
   }
+  return -1;
+}
+
+jQuery(document).ready(function() {
+  for (var i in allClients) {
+    $("#order").append("<li>" + "<span class='delete'>x </span>" + allClients[i].name + " - " + getMessage(allClients[i]) + "</li>");
+    // add attribute with the client id to the delete x span
+    $(".delete").last().attr("value", allClients[i].id);
+    $(".delete").last().click(function(event) {
+      event.preventDefault();
+      // pull the client id from the the delete x span and delete from array
+      var thisClientId = $(this).attr("value");
+      var clientIndex = getClientIndex(thisClientId);
+      allClients.splice(clientIndex, 1);
+      Cookies.set("allClients", JSON.stringify(allClients));
+      $(this).parent().remove();
+    });
+  }
+
+  $("#client-btn").click(function(event) {
+    event.preventDefault();
+    window.open('index.html','_self',false);
+  });
 });

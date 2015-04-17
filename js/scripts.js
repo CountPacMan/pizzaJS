@@ -1,7 +1,11 @@
 var allClients = [];
+if (JSON.parse(Cookies.get("allClients")).length > 0) {
+  allClients = JSON.parse(Cookies.get("allClients"));
+}
 
 function Client() {
   this.name = "";
+  this.id = "";
   this.cheese = 0;
   this.pepperoni = 0;
 
@@ -12,6 +16,10 @@ function Client() {
   this.removePizza = function(type, number) {
     this[type] -= number;
   };
+
+  this.generateId = function() {
+    this.id = this.name + Math.floor(Math.random() * 999999) + 1;
+  }
 }
 
 function getMessage(client) {
@@ -28,19 +36,21 @@ jQuery(document).ready(function() {
   $("#name-form").submit(function(event) {
     event.preventDefault();
     $("#name-form").hide();
-    $("#emplyee-login").hide();
+    $("#employee-login").hide();
 
     var clientName = $("#name").val();
-    var newClient = new Client();
+    newClient = new Client();
     newClient.name = clientName;
+    newClient.generateId();
 
     $("#client-name").text(clientName);
     $("#order-form").show();
 
     $("#order-form").submit(function(event) {
       event.preventDefault();
-      $("#order-form").hide();
+      event.stopImmediatePropagation();
 
+      $("#order-form").hide();
       var cheese = parseInt($("#cheese").val());
       var pepperoni = parseInt($("#pepperoni").val());
       newClient.addPizza("cheese", cheese);
@@ -48,12 +58,12 @@ jQuery(document).ready(function() {
 
       allClients.push(newClient);
       Cookies.set("allClients", JSON.stringify(allClients));
-      console.log(allClients);
-      console.log(JSON.parse(Cookies.get("allClients")));
       var message = getMessage(newClient);
 
       $("#order").text(message);
       $("#message").show();
+
+      delete newClient;
 
       $("#new-order").click(function(event) {
         $("#message").hide();
