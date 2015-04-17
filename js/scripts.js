@@ -1,12 +1,11 @@
-var Client = {
-  init: function() {
-    var cheese = 0;
-    var pepperoni = 0;
-  },
-  addPizza: function(type, number) {
-    
-  }
-};
+function Client() {
+  this.cheese = 0;
+  this.pepperoni = 0;
+
+  this.addPizza = function(type, number) {
+    this[type] += number;
+  };
+}
 
 
 jQuery(document).ready(function() {
