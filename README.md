@@ -22,6 +22,7 @@ This website uses cookies and requires a webserver to run.
 - CSS3
 - JavaScript
 - jQuery ver 2.1.3
+- js-cookie ver 1.5.0
 - Bootstrap ver 3.3.1
 - mochaJS ver 2.2.1
 - chaiJS ver 2.2.0
