@@ -19,3 +19,11 @@ ul {
 #order {
   font-size: large;
 }
+
+img {
+  width: 100px;
+  height: 85px;
+  float: left;
+  clear: both;
+  padding-bottom: 10px;
+}

@@ -55,8 +55,13 @@ jQuery(document).ready(function() {
       event.stopImmediatePropagation();
 
       $("#order-form").hide();
-      var cheese = parseInt($("#cheese").val());
-      var pepperoni = parseInt($("#pepperoni").val());
+      var cheese = $("#cheese").val();
+      var pepperoni = $("#pepperoni").val();
+
+      // ensure that NaN or empty values are assigned zero
+      cheese = +cheese || 0;
+      pepperoni = +pepperoni || 0;
+
       newClient.addPizza("cheese", cheese);
       newClient.addPizza("pepperoni", pepperoni);
 
@@ -65,6 +70,8 @@ jQuery(document).ready(function() {
       var message = getMessage(newClient);
 
       $("#order").text(message);
+
+      $("#cost").text(newClient.getCost());
       $("#message").show();
 
       delete newClient;

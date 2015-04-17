@@ -10,6 +10,7 @@
   </head>
   <body>
     <div class="container">
+      <img src="/img/pizza.jpg" alt="pizza logo">
       <h1>Pizza JS</h1>
 
       <form id="name-form">
@@ -32,7 +33,7 @@
         <div class="row">
           <div class="col-md-12">
             <h4>Welcome <span id="client-name"></span></h4>
-            <h6>How many cheese and pepperoni pizzas for you today?</h6>
+            <h6>How many cheese ($10) and pepperoni ($12.50) pizzas for you today?</h6>
             <hr />
           </div>
         </div>
@@ -56,7 +57,7 @@
       </form>
       <div class="row">
         <div id="message">
-          <h3>Your order of <span id="order" class="text-danger"></span> will be ready to pick-up in 1 hour</h3>
+          <h4>Your order of <span id="order" class="text-danger"></span> will be ready to pick-up in 1 hour. Your total is $<span id="cost" class="text-info"></span></h4>
           <hr />
           <h4>Another order?</h4>
           <button id="new-order" class="btn btn-warning">New Order</button>
