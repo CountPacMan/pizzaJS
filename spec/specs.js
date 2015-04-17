@@ -23,4 +23,13 @@ describe('PizzaJS - scripts.js', function() {
       expect([testClient.pepperoni, testClient.cheese]).to.deep.equal([2, 3]);
     });
   });
+
+  describe('addPizza("pepperoni", 2) and removePizza("pepperoni", 1)', function() {
+    it("adds 2 pepperoni pizzas and removes 1", function() {
+      var testClient = new Client();
+      testClient.addPizza("pepperoni", 2);
+      testClient.removePizza("pepperoni", 1);
+      expect(testClient.pepperoni).to.equal(1);
+    });
+  });
 });
