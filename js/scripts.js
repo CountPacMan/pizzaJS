@@ -17,7 +17,15 @@ function Client() {
 
 jQuery(document).ready(function() {
   $("#name").focus();
-  $("#").submit(function(event) {
+  $("#name-form").submit(function(event) {
     event.preventDefault();
+    $("#name-form").hide();
+    
+    var clientName = $("#name").val();
+    var newClient = new Client();
+    newClient.name = clientName;
+
+    $("#client-name").text(clientName);
+    $("#order-form").show();
   });
 });
