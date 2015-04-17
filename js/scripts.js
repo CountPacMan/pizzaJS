@@ -41,10 +41,14 @@ jQuery(document).ready(function() {
       message += cheese > 0 && pepperoni > 0 ? " and " : "";
       message += pepperoni > 0 ? pepperoni + " pepperoni" : "";
       message += cheese + pepperoni > 1 ? " pizzas" : " pizza";
-      
+
       $("#order").text(message);
       $("#message").show();
-      debugger;
+
+      $("#new-order").click(function(event) {
+        $("#message").hide();
+        $("#name-form").show();
+      });
     });
   });
 });
