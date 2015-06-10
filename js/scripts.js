@@ -1,7 +1,11 @@
 var allClients = [];
-if (JSON.parse(Cookies.get("allClients")).length > 0) {
+console.log((Cookies.get("allClients")));
+if (!Cookies.get("allClients")) {
+  Cookies.set("allClients", allClients);
+} else if (JSON.parse(Cookies.get("allClients")).length > 0) {
   allClients = JSON.parse(Cookies.get("allClients"));
 }
+console.log((Cookies.get("allClients")));
 
 function Client() {
   this.name = "";
